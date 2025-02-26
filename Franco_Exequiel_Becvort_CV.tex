@@ -1,338 +1,115 @@
 \documentclass[10pt, letterpaper]{article}
+
 % Packages:
-\usepackage[
-    ignoreheadfoot, % set margins without considering header and footer
-    top=2 cm, % seperation between body and page edge from the top
-    bottom=2 cm, % seperation between body and page edge from the bottom
-    left=2 cm, % seperation between body and page edge from the left
-    right=2 cm, % seperation between body and page edge from the right
-    footskip=1.0 cm, % seperation between body and footer
-    % showframe % for debugging 
-]{geometry} % for adjusting page geometry
-\usepackage{titlesec} % for customizing section titles
-\usepackage{tabularx} % for making tables with fixed width columns
-\usepackage{array} % tabularx requires this
-\usepackage[dvipsnames]{xcolor} % for coloring text
-\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
-\usepackage{enumitem} % for customizing lists
-\usepackage{fontawesome5} % for using icons
-\usepackage{amsmath} % for math
-\usepackage[
-    pdftitle={Franco Exequiel Becvort's CV},
-    pdfauthor={Franco Exequiel Becvort},
-    pdfcreator={LaTeX with RenderCV},
-    colorlinks=true,
-    urlcolor=primaryColor
-]{hyperref} % for links, metadata and bookmarks
-\usepackage[pscoord]{eso-pic} % for floating text on the page
-\usepackage{calc} % for calculating lengths
-\usepackage{bookmark} % for bookmarks
-\usepackage{lastpage} % for getting the total number of pages
-\usepackage{changepage} % for one column entries (adjustwidth environment)
-\usepackage{paracol} % for two and three column entries
-\usepackage{ifthen} % for conditional statements
-\usepackage{needspace} % for avoiding page brake right after the section title
-\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
-% Ensure that generate pdf is machine readable/ATS parsable:
-\ifPDFTeX
-    \input{glyphtounicode}
-    \pdfgentounicode=1
-    \usepackage[T1]{fontenc}
-    \usepackage[utf8]{inputenc}
-    \usepackage{lmodern}
-\fi
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage{titlesec, tabularx, array, xcolor, enumitem, hyperref, paracol}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
 \usepackage{charter}
-% Some settings:
-\raggedright
-\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
-\pagestyle{empty} % no header or footer
-\setcounter{secnumdepth}{0} % no section numbering
-\setlength{\parindent}{0pt} % no indentation
-\setlength{\topskip}{0pt} % no top skip
-\setlength{\columnsep}{0.15cm} % set column seperation
-\pagenumbering{gobble} % no page numbering
-\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
-\titlespacing{\section}{
-    % left space:
-    -1pt
-}{
-    % top space:
-    0.3 cm
-}{
-    % bottom space:
-    0.2 cm
-} % section title spacing
-\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
-\newenvironment{highlights}{
-    \begin{itemize}[
-        topsep=0.10 cm,
-        parsep=0.10 cm,
-        partopsep=0pt,
-        itemsep=0pt,
-        leftmargin=0 cm + 10pt
-    ]
-}{
-    \end{itemize}
-} % new environment for highlights
-\newenvironment{highlightsforbulletentries}{
-    \begin{itemize}[
-        topsep=0.10 cm,
-        parsep=0.10 cm,
-        partopsep=0pt,
-        itemsep=0pt,
-        leftmargin=10pt
-    ]
-}{
-    \end{itemize}
-} % new environment for highlights for bullet entries
-\newenvironment{onecolentry}{
-    \begin{adjustwidth}{
-        0 cm + 0.00001 cm
-    }{
-        0 cm + 0.00001 cm
-    }
-}{
-    \end{adjustwidth}
-} % new environment for one column entries
-\newenvironment{twocolentry}[2][]{
-    \onecolentry
-    \def\secondColumn{#2}
-    \setcolumnwidth{\fill, 4.5 cm}
-    \begin{paracol}{2}
-}{
-    \switchcolumn \raggedleft \secondColumn
-    \end{paracol}
-    \endonecolentry
-} % new environment for two column entries
-\newenvironment{threecolentry}[3][]{
-    \onecolentry
-    \def\thirdColumn{#3}
-    \setcolumnwidth{, \fill, 4.5 cm}
-    \begin{paracol}{3}
-    {\raggedright #2} \switchcolumn
-}{
-    \switchcolumn \raggedleft \thirdColumn
-    \end{paracol}
-    \endonecolentry
-} % new environment for three column entries
-\newenvironment{header}{
-    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
-}{
-    \par\kern\topsep
-} % new environment for the header
-\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
-  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
-    \put(
-        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
-        \LenToUnit{\paperheight-1.0 cm}
-    ){\vtop{{\null}\makebox[0pt][c]{
-        \small\color{gray}\textit{Last updated in July 2024}\hspace{\widthof{Last updated in July 2024}}
-    }}}%
-  }%
-}%
-% save the original href command in a new command:
-\let\hrefWithoutArrow\href
-% new command for external links:
+\usepackage{fontawesome5}
+
+% Custom Colors
+\definecolor{primaryColor}{RGB}{0, 0, 0}
+
+% Formatting:
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{0.2cm}
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} 
+
+% Section Title Style
+\titleformat{\section}{\large\bfseries}{}{0pt}{}[\vspace{2pt}\titlerule]
+
 \begin{document}
-    \newcommand{\AND}{\unskip
-        \cleaders\copy\ANDbox\hskip\wd\ANDbox
-        \ignorespaces
-    }
-    \newsavebox\ANDbox
-    \sbox\ANDbox{$|$}
-    \begin{header}
-        \fontsize{25 pt}{25 pt}\selectfont Franco Exequiel Becvort
 
-        \vspace{5 pt}
+% HEADER
+\begin{center}
+    {\LARGE\bfseries Franco Exequiel Becvort} \\
+    Lisbon, Portugal | Open to relocation | Work permit required \\
+    \href{mailto:franbecvort@gmail.com}{franbecvort@gmail.com} | 
+    \href{https://pollito.dev/}{pollito.dev} | 
+    \href{https://linkedin.com/in/franco-becvort}{linkedin.com/in/franco-becvort} \\
+\end{center}
 
-        \normalsize
-        \mbox{Lisbon, Portugal (need work permit)}%
-        \kern 5.0 pt%
-        \AND%
-        \kern 5.0 pt%
-        \mbox{\hrefWithoutArrow{mailto:franbecvort@gmail.com}{franbecvort@gmail.com}}%
-        \kern 5.0 pt%
-        \AND%
-        \kern 5.0 pt%
-        \mbox{\hrefWithoutArrow{https://pollito.dev/}{pollito.dev}}%
-        \kern 5.0 pt%
-        \AND%
-        \kern 5.0 pt%
-        \mbox{\hrefWithoutArrow{https://linkedin.com/in/franco-becvort}{linkedin.com/in/franco-becvort}}%
-    \end{header}
-    \vspace{5 pt - 0.3 cm}
-    \section{Experience}
-    \begin{twocolentry}{
-        May 2023  - Present
-    }
-    \textbf{Java Spring Boot Developer}, Devsu
-    \end{twocolentry}
-    \vspace{0.10 cm}
-    \begin{onecolentry}
-        \begin{highlights}
-            \item Maintenance and upgrade of legacy microservices to modern standards. Improvement of user authentication and onboarding for high availability across digital channels. Development of solutions for compliance with government and banking regulations to meet industry standards.
-        \end{highlights}
-    \end{onecolentry}  
-    \vspace{0.2 cm}  
-    \begin{twocolentry}{
-            Nov 2022  - Apr 2023
-        }
-    \textbf{Java Spring Boot Developer}, Applica solutions
-    \end{twocolentry}   
-    \vspace{0.10 cm}
-    \begin{onecolentry}
-        \begin{highlights}
-            \item Development in a virtual wallet application, focusing on the QR code scanning feature, and integration of multiple payment methods.
-        \end{highlights}
-    \end{onecolentry}
-    \vspace{0.2 cm}
-    \begin{twocolentry}{
-            Jul 2022  - Oct 2022
-        }
-        \textbf{Next.js Developer}, runaID
-    \end{twocolentry}
-    \vspace{0.10 cm}
-    \begin{onecolentry}
-        \begin{highlights}
-            \item Implementation of a medical records management system.
-        \end{highlights}
-    \end{onecolentry}
-    \vspace{0.2 cm}
-    \begin{twocolentry}{
-            Sep 2021  - Jun 2022
-        }
-        \textbf{Grails Developer}, runaID
-    \end{twocolentry}
-    \vspace{0.10 cm}
-    \begin{onecolentry}
-        \begin{highlights}
-            \item Web development for government and internal administration portals.
-        \end{highlights}
-    \end{onecolentry}
-    \vspace{0.2 cm}
-    \begin{twocolentry}{
-            Jun 2020 - Jun 2022
-        }
-        \textbf{Academic Researcher}, Universidad Nacional de San Luis
-    \end{twocolentry}
-    \vspace{0.10 cm}
-    \begin{onecolentry}
-        \begin{highlights}
-            \item University practices in a project to raise awareness about risks on the Internet. Speaker in informative talks and collaboration in related events.
-            \item University internship as a tutor for admission to the faculty of physical, mathematical, and natural sciences. Teaching classes and evaluating applicants.
-        \end{highlights}
-    \end{onecolentry}
-    \vspace{0.2 cm}
-    \section{Education}                   
-    \begin{twocolentry}{
-        Jun 2018 – Nov 2021
-    }
-    \textbf{Computer Engineering}, Universidad Nacional de San Luis
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Jan 2011 – Dec 2016
-        }
-        \textbf{English Language and Literature}, Cambridge Institute
-    \end{twocolentry}
-    \section{Licenses and Certifications}
-        \begin{twocolentry}{
-        Oct 2024
-    }
-    \textbf{Seminário de Desempenho e Segurança do MySQL em Lisboa}, Oracle
-    \end{twocolentry}
-    \begin{twocolentry}{
-        Sep 2024
-    }
-    \textbf{Participação no evento Tech O'Clock 2024}, ITSector
-    \end{twocolentry}
-    \begin{twocolentry}{
-        Jul 2024
-    }
-    \textbf{Microsoft Certified: Azure Fundamentals}, Microsoft
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Jun 2024
-        }
-        \textbf{Confluent Fundamentals Accreditation}, Confluent
-    \end{twocolentry}
-    \begin{twocolentry}{
-            May 2024
-        }
-        \textbf{Professional Scrum Master (PSM I)}, Scrum.org
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Mar 2024
-        }
-        \textbf{Professional Cloud Architect}, Google Cloud
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Nov 2023
-        }
-        \textbf{Associate Cloud Engineer}, Google Cloud
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Oct 2023
-        }
-        \textbf{Java - Mítico}, Banco Pichincha
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Oct 2023
-        }
-        \textbf{Pruebas de Mutación}, Banco Pichincha
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Sep 2023
-        }
-        \textbf{Cloud Computing}, Google Digital Academy (Skillshop)
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Sep 2023
-        }
-        \textbf{Codificación Segura}, Banco Pichincha
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Sep 2023
-        }
-        \textbf{Estándares de Bases de Datos}, Banco Pichincha
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Jun 2023
-        }
-        \textbf{Buenas prácticas de bases de datos}, Banco Pichincha
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Jun 2023
-        }
-        \textbf{Java - Elite}, Banco Pichincha
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Jun 2023
-        }
-        \textbf{Java - Estándares}, Banco Pichincha
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Feb 2023
-        }
-        \textbf{EF SET Certificate English C2 Proficient}, EF Education First
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Aug 2022
-        }
-        \textbf{Fundamentos de Spring Framework para Java}, UTN Buenos Aires
-    \end{twocolentry}
-    \begin{twocolentry}{
-            May 2022
-        }
-        \textbf{Cloud Digital Leader}, Google Cloud
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Dec 2019
-        }
-        \textbf{Quinta Escuela de Informática}, Universidad Nacional de San Luis
-    \end{twocolentry}
-    \begin{twocolentry}{
-            Nov 2019
-        }
-        \textbf{I Jornada de Informática}, Universidad Nacional de San Luis
-    \end{twocolentry}
+\vspace{5pt}
+
+% PROFESSIONAL SUMMARY
+\section{Profile}
+Experienced Java Spring Boot Developer with expertise  building and maintaining scalable microservices, authentication systems, and cloud solutions. Strong background in fintech, compliance, and enterprise-grade applications. Certified in Google Cloud, Microsoft Azure, and Agile methodologies.
+
+% TECHNICAL SKILLS
+\section{Technical Skills}
+\begin{itemize}[leftmargin=10pt, noitemsep]
+    \item \textbf{Languages:} Java, JavaScript, TypeScript, Groovy, SQL
+    \item \textbf{Frameworks:} Spring Boot, Next.js, Grails
+    \item \textbf{Databases:} Microsoft SQL Server, MySQL, Oracle
+    \item \textbf{Cloud:} Google Cloud (GCP), Microsoft Azure
+    \item \textbf{DevOps \& Tools:} Git, CI/CD, Confluent Kafka
+    \item \textbf{Other:} Secure Coding Practices, Agile (Scrum), Unit Testing, Mutation Testing, API Development
+\end{itemize}
+
+% EXPERIENCE
+\section{Experience}
+\textbf{Java Spring Boot Developer, Devsu} \hfill May 2023 – Present \
+\begin{itemize}[leftmargin=10pt, noitemsep]
+    \item Enhanced authentication flows for the mobile application and the web page of Ecuador's biggest private bank.
+    \item Modernized legacy back-end microservices to meet current standards and best practices.
+\end{itemize}
+
+\textbf{Java Spring Boot Developer, Applica Solutions} \hfill Nov 2022 – Apr 2023 \
+\begin{itemize}[leftmargin=10pt, noitemsep]
+    \item Developed the backend of the first Argentinian QR-based payment system.
+    \item Integrated multiple payment methods in a fintech application.
+\end{itemize}
+
+\textbf{Next.js Developer, runaID} \hfill Jul 2022 – Oct 2022 \
+\begin{itemize}[leftmargin=10pt, noitemsep]
+    \item Implemented a medical records management system for a health insurance provider.
+    \item Automated data processing by the creation of scheduled jobs.
+\end{itemize}
+
+\textbf{Grails Developer, runaID} \hfill Sep 2021 – Jun 2022 \
+\begin{itemize}[leftmargin=10pt, noitemsep]
+    \item Built new features and maintained a small town government platform.
+    \item Implemented integrations to facilitate seamless communication with other internal government systems.
+
+\end{itemize}
+
+\textbf{Academic Researcher, Universidad Nacional de San Luis} \hfill Jun 2020 – Jun 2022 \
+\begin{itemize}[leftmargin=10pt, noitemsep]
+    \item Part of cybersecurity awareness initiatives and delivered educational talks.
+    \item Admission tutor and student mentor.
+\end{itemize}
+
+% EDUCATION
+\section{Education}
+\textbf{B.Sc. in Computer Engineering (64.44\% Completed)}, Universidad Nacional de San Luis \hfill 2018 – 2021
+\textbf{English Language and Literature}, Cambridge Institute \hfill 2011 – 2016
+
+% CERTIFICATIONS
+\section{Certifications}
+\begin{itemize}[leftmargin=10pt, noitemsep]
+    \item \textbf{Seminário de Desempenho e Segurança do MySQL em Lisboa} – Oracle (Oct 2024)
+    \item \textbf{Participação no evento Tech O'Clock 2024} – ITSector (Sep 2024)
+    \item \textbf{Microsoft Certified: Azure Fundamentals} – Microsoft (Jul 2024)
+    \item \textbf{Confluent Fundamentals Accreditation} – Confluent (Jun 2024)
+    \item \textbf{Professional Scrum Master (PSM I)} – Scrum.org (May 2024)
+    \item \textbf{Professional Cloud Architect} – Google Cloud (Mar 2024)
+    \item \textbf{Associate Cloud Engineer} – Google Cloud (Nov 2023)
+    \item \textbf{Java - Mítico} – Banco Pichincha (Oct 2023)
+    \item \textbf{Pruebas de Mutación} – Banco Pichincha (Oct 2023)
+    \item \textbf{Cloud Computing} – Google Digital Academy (Skillshop) (Sep 2023)
+    \item \textbf{Codificación Segura} – Banco Pichincha (Sep 2023)
+    \item \textbf{Estándares de Bases de Datos} – Banco Pichincha (Sep 2023)
+    \item \textbf{Buenas prácticas de bases de datos} – Banco Pichincha (Jun 2023)
+    \item \textbf{Java - Elite} – Banco Pichincha (Jun 2023)
+    \item \textbf{Java - Estándares} – Banco Pichincha (Jun 2023)
+    \item \textbf{EF SET Certificate English C2 Proficient} – EF Education First (Feb 2023)
+    \item \textbf{Fundamentos de Spring Framework para Java} – UTN Buenos Aires (Aug 2022)
+    \item \textbf{Cloud Digital Leader} – Google Cloud (May 2022)
+    \item \textbf{I Jornada de Informática} – Universidad Nacional de San Luis (Nov 2019)
+\end{itemize}
+
 \end{document}
