@@ -3,11 +3,11 @@
 % Packages:
 \usepackage[a4paper, margin=2cm]{geometry}
 \usepackage{titlesec, tabularx, array, xcolor, enumitem, hyperref, paracol}
+\usepackage{multicol}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage{charter}
-\usepackage{fontawesome5}
 
 % Custom Colors
 \definecolor{primaryColor}{RGB}{0, 0, 0}
@@ -17,7 +17,7 @@
 \setcounter{secnumdepth}{0}
 \setlength{\parindent}{0pt}
 \setlength{\columnsep}{0.2cm}
-\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} 
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
 
 % Section Title Style
 \titleformat{\section}{\large\bfseries}{}{0pt}{}[\vspace{2pt}\titlerule]
@@ -28,8 +28,8 @@
 \begin{center}
     {\LARGE\bfseries Franco Exequiel Becvort} \\
     Lisbon, Portugal | Open to relocation | Work permit required \\
-    \href{mailto:franbecvort@gmail.com}{franbecvort@gmail.com} | 
-    \href{https://pollito.dev/}{pollito.dev} | 
+    \href{mailto:franbecvort@gmail.com}{franbecvort@gmail.com} |
+    \href{https://pollito.dev/}{pollito.dev} |
     \href{https://linkedin.com/in/franco-becvort}{linkedin.com/in/franco-becvort} \\
 \end{center}
 
@@ -37,63 +37,104 @@
 
 % PROFESSIONAL SUMMARY
 \section{Profile}
-Experienced Software Developer with a strong foundation in designing and scaling high-performance Java Spring Boot microservices for enterprise and fintech applications. Proven expertise in multi-cloud deployment (GCP, Azure) and complex authentication systems. Currently leveraging modern full-stack technologies (TypeScript, React, Deno) to develop innovative solutions in the rapidly evolving domain of AI and large codebase analysis. Certified in major cloud platforms and Agile methodologies.
+Experienced Software Developer with a strong foundation in designing and scaling high-performance Java Spring Boot microservices for enterprise and fintech applications. Proven expertise in multi-cloud deployment (GCP, Azure), complex authentication systems, and zero-downtime identity migrations. Currently building Velx, an AI platform for large-scale codebase analysis, using modern full-stack technologies (TypeScript, React, Deno) together with LLM agents and the Model Context Protocol. Certified across major cloud platforms, AI tooling, and Agile methodologies.
 
 % EXPERIENCE
 \section{Experience}
-\textbf{Software Developer (AI/Code Analysis), Devsu} \hfill Nov 2025 – Present \
+\textbf{Software Developer (AI/Code Analysis), Devsu} \hfill Nov 2025 -- Present \
 \begin{itemize}[leftmargin=10pt, noitemsep]
-    \item Developing a new solution focused on analyzing massive codebases.
-    \item Tech used: TypeScript, React, Deno, Supabase, RabbitMQ, Tailwind CSS, Vite, Docker Compose, Langfuse, LiteLLM.
+    \item Core contributor to \textbf{Velx}, an AI platform that analyzes, distills, and documents large-scale codebases; named in Gartner's first-ever Magic Quadrant for its category.
+    \item Improved the existing MCP (Model Context Protocol) server with new planning and code-review tools and prompts for LLM agents, enhanced the distillation engine (context-aware skipping, cost / token metrics), and added Bitbucket and GitHub provider integrations.
+    \item Built an interactive C4 / Mermaid architecture-diagram editor in React and reproducible LLM evaluation benchmarks (TypeScript, Python, marimo notebooks), and contributed full-stack work to Devsu's marketing site (Next.js, Prismic CMS).
+    \item Tech used: TypeScript, Deno, React, Vite, Next.js, Effect, Neo4j, Supabase, RabbitMQ, LiteLLM, Langfuse, Python, Tailwind CSS, Docker Compose, Playwright.
 \end{itemize}
 
-\textbf{Java Spring Boot Developer, Devsu} \hfill May 2023 – October 2025 \
+\textbf{Java Spring Boot Developer, Devsu} \hfill May 2023 -- Oct 2025 \
 \begin{itemize}[leftmargin=10pt, noitemsep]
-    \item Integrated identity providers with customer facing pages and application of Ecuador’s largest private bank.
-    \item Tech used: Java, Spring Boot, Google Cloud, Microsoft Azure, PostgreSQL, Redis.
+    \item As part of the customer security and onboarding team for \textbf{Ecuador's largest private bank}, helped gradually migrate all customer identities from WSO2 Identity Server to Auth0, re-platforming customer-facing authentication with near-zero room for error on flows serving roughly 600,000 authentication requests per day.
+    \item Integrated and maintained identity providers across a heterogeneous landscape of Java / Spring Boot microservices (mixed language and framework versions) deployed on both Google Cloud and Microsoft Azure.
+    \item Occasionally facilitated Scrum ceremonies (daily stand-ups and sprint retrospectives, including team icebreakers).
+    \item Tech used: Java, Spring Boot, Auth0, WSO2, Google Cloud, Microsoft Azure, PostgreSQL, Redis.
 \end{itemize}
 
-\textbf{Java Spring Boot Developer, Applica Solutions} \hfill Nov 2022 – Apr 2023 \
+\textbf{Java Spring Boot Developer, Applica Mobile} \hfill Nov 2022 -- Apr 2023 \
 \begin{itemize}[leftmargin=10pt, noitemsep]
-    \item Standardized the backend REST APIs for Argentina’s first QR-based payment system.
+    \item Standardized the backend REST APIs for \textbf{Argentina's first QR-based payment system}.
     \item Tech used: Java, Spring Boot, Oracle Database, WildFly Server.
 \end{itemize}
 
-\textbf{Next.js Developer, runaID} \hfill Jul 2022 – Oct 2022 \
+\textbf{Next.js Developer, runaID} \hfill Jul 2022 -- Oct 2022 \
 \begin{itemize}[leftmargin=10pt, noitemsep]
-    \item Implemented the creation of a new auditing dashboard from scratch to process and verify huge volumes of medical receipts.
+    \item Implemented a new auditing dashboard from scratch to process and verify large volumes of medical receipts.
     \item Tech used: Next.js, React, TypeScript, Tailwind CSS, Node.js, Docker Compose, MySQL.
 \end{itemize}
 
-\textbf{Apache Groovy Developer, runaID} \hfill Sep 2021 – Jun 2022 \
+\textbf{Apache Groovy Developer, runaID} \hfill Sep 2021 -- Jun 2022 \
 \begin{itemize}[leftmargin=10pt, noitemsep]
-    \item Developed and maintained public services and legacy system for the San Luis city government.
+    \item Developed and maintained public services and legacy systems for government clients (San Luis city government and DOSEP, Province of San Luis).
     \item Tech used: Groovy Server Pages, JavaScript, jQuery, Bootstrap CSS, Apache Tomcat, Microsoft SQL Server.
 \end{itemize}
 
-\textbf{Academic Researcher, Universidad Nacional de San Luis} \hfill Jun 2020 – Jun 2022 \
+\textbf{Academic Researcher, Universidad Nacional de San Luis} \hfill Jun 2020 -- Jun 2022 \
 \begin{itemize}[leftmargin=10pt, noitemsep]
     \item Part of cybersecurity awareness initiatives and delivered educational talks.
     \item Admission tutor and student mentor.
 \end{itemize}
 
+% EDUCATION
+\section{Education}
+\textbf{Universidad Nacional de San Luis} \hfill 2018 -- 2021 \\
+Computer Engineering -- completed coursework (GPA 7.58 / 10) \\[2pt]
+\textbf{Universidad Nacional de San Juan} \hfill 2011 -- 2017 \\
+Bachelor's Degree, Natural Sciences
+
+% LANGUAGES
+\section{Languages}
+\begin{itemize}[leftmargin=10pt, noitemsep]
+    \item \textbf{Spanish} -- Native
+    \item \textbf{English} -- C2 Proficient (EF SET); full professional proficiency
+    \item \textbf{Portuguese} -- Conversational (resident in Portugal for almost 3 years)
+\end{itemize}
+
+% SIDE PROJECTS
+\section{Side Projects}
+\textbf{Pollito's Opinion on Spring Boot Development} -- \href{https://springboot.pollito.tech/}{springboot.pollito.tech} \\
+A hands-on guide to building and shipping Spring Boot services in Java, Kotlin, and Groovy -- from Spring Initializr to a complete deployment setup: CI/CD, a self-hosted VPS running Coolify, Docker, PostgreSQL, and full observability (Grafana, Loki, Prometheus). \\[2pt]
+\textbf{pollito.dev} -- \href{https://pollito.dev/}{pollito.dev} \\
+Personal Hugo blog on software engineering: VPS fundamentals, deploying Spring Cloud microservices on GKE, and developer-culture essays. \\[2pt]
+\textbf{nixos-dotfiles} -- \href{https://github.com/franBec/nixos-dotfiles}{github.com/franBec/nixos-dotfiles} \\
+My daily-driver NixOS configuration as code: a fully declarative, version-controlled, reproducible OS setup built with Nix flakes and Home Manager.
+
 % CERTIFICATIONS
 \section{Certifications}
-\begin{itemize}[leftmargin=10pt, noitemsep]
-    \item \textbf{Microsoft Certified: DevOps Engineer Expert} – Microsoft (Oct 2025)
-    \item \textbf{Microsoft Certified: Azure Developer Associate} – Microsoft (Jul 2025)
-    \item \textbf{Seminário de Desempenho e Segurança do MySQL em Lisboa} – Oracle (Oct 2024)
-    \item \textbf{Participação no evento Tech O'Clock 2024} – ITSector (Sep 2024)
-    \item \textbf{Microsoft Certified: Azure Fundamentals} – Microsoft (Jul 2024)
-    \item \textbf{Confluent Fundamentals Accreditation} – Confluent (Jun 2024)
-    \item \textbf{Professional Scrum Master (PSM I)} – Scrum.org (May 2024)
-    \item \textbf{Professional Cloud Architect} – Google Cloud (Mar 2024)
-    \item \textbf{Associate Cloud Engineer} – Google Cloud (Nov 2023)
-    \item \textbf{Cloud Computing} – Google Digital Academy (Skillshop) (Sep 2023)
-    \item \textbf{EF SET Certificate English C2 Proficient} – EF Education First (Feb 2023)
-    \item \textbf{Fundamentos de Spring Framework para Java} – UTN Buenos Aires (Aug 2022)
-    \item \textbf{Cloud Digital Leader} – Google Cloud (May 2022)
-    \item \textbf{I Jornada de Informática} – Universidad Nacional de San Luis (Nov 2019)
+\begin{multicols}{2}
+\begin{itemize}[leftmargin=10pt, itemsep=3pt, parsep=0pt, topsep=2pt]
+    \item \textbf{Building with the Claude API} -- Anthropic (Apr 2026)
+    \item \textbf{Claude Code in Action} -- Anthropic (Apr 2026)
+    \item \textbf{Introduction to Model Context Protocol} -- Anthropic (Apr 2026)
+    \item \textbf{Introduction to Agent Skills} -- Anthropic (Apr 2026)
+    \item \textbf{Microsoft Certified: DevOps Engineer Expert} -- Microsoft (Oct 2025, exp. Oct 2026)
+    \item \textbf{Microsoft Certified: Azure Developer Associate} -- Microsoft (Jul 2025, exp. Jul 2026)
+    \item \textbf{Seminário de Desempenho e Segurança do MySQL em Lisboa} -- Oracle (Oct 2024)
+    \item \textbf{Tech O'Clock 2024} -- ITSector (Sep 2024)
+    \item \textbf{Microsoft Certified: Azure Fundamentals} -- Microsoft (Jul 2024)
+    \item \textbf{Confluent Fundamentals Accreditation} -- Confluent (Jun 2024)
+    \item \textbf{Professional Scrum Master (PSM I)} -- Scrum.org (May 2024)
+    \item \textbf{Professional Cloud Architect} -- Google Cloud (Mar 2024, exp. Feb 2028)
+    \item \textbf{Associate Cloud Engineer} -- Google Cloud (Nov 2023, exp. Nov 2026)
+    \item \textbf{Java -- Mítico} -- Banco Pichincha (Oct 2023)
+    \item \textbf{Pruebas de Mutación} -- Banco Pichincha (Oct 2023)
+    \item \textbf{Cloud Computing} -- Google Digital Academy (Sep 2023)
+    \item \textbf{Codificación Segura} -- Banco Pichincha (Sep 2023)
+    \item \textbf{Estándares de Bases de Datos} -- Banco Pichincha (Sep 2023)
+    \item \textbf{Java -- Elite} -- Banco Pichincha (Jun 2023)
+    \item \textbf{Java -- Estándares} -- Banco Pichincha (Jun 2023)
+    \item \textbf{Buenas Prácticas de Bases de Datos} -- Banco Pichincha (Jun 2023)
+    \item \textbf{EF SET Certificate English C2 Proficient} -- EF Education First (Feb 2023)
+    \item \textbf{Fundamentos de Spring Framework para Java} -- UTN Buenos Aires (Aug 2022)
+    \item \textbf{Cloud Digital Leader} -- Google Cloud (May 2022, expired May 2025)
+    \item \textbf{I Jornada de Informática} -- Universidad Nacional de San Luis (Nov 2019)
 \end{itemize}
+\end{multicols}
 
 \end{document}
